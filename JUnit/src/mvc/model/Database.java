@@ -60,8 +60,11 @@ public class Database {
 			return;
 		try {
 			//http://stackoverflow.com/questions/17484764/java-lang-classnotfoundexception-com-mysql-jdbc-driver-in-eclipse
+		
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+			
 			Class.forName("com.mysql.jdbc.Driver");
+		
 		}catch(ClassNotFoundException e){
 			throw new Exception("Driver not found");
 		}
@@ -71,6 +74,7 @@ public class Database {
 		String url = String.format(cred[0], cred[1]);
 		
 		con = DriverManager.getConnection(url, cred[2], cred[3]);
+		
 		System.out.println("\nSuccesfully connected to database.");
 	}
 	
@@ -78,6 +82,7 @@ public class Database {
 		if(con != null){
 			try {
 				con.close();
+				
 			} catch(SQLException e){
 				System.out.println("\nCannot close the database connection.");
 			}

@@ -39,15 +39,17 @@ public class PersonDAO {
 	public List<Person> getPeople() throws SQLException{
 		
 		List<Person> people = new ArrayList<Person>();
+		
 		Connection conn = Database.getInstance().getConnection();
 		
 		String sql = "select id, name, password from people order by id";
-		Statement selectStatement = conn.createStatement();
 		
-		ResultSet results = selectStatement.executeQuery(sql);
+		java.sql.Statement selectStatement = conn.createStatement();
+		
+		java.sql.ResultSet results = selectStatement.executeQuery(sql);
 		
 		while(results.next()){
-			int id = results.getInt("id");
+			//int id = results.getInt("id");
 			String name = results.getString("name");
 			String password = results.getString("password");
 			
